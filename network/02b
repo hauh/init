@@ -1,0 +1,1 @@
+ifconfig en0 | grep broadcast | cut -f6 -d " " | xargs ping -c 4 >/dev/null ; arp -a
