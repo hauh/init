@@ -1,0 +1,1 @@
+whois slash16.org | grep -m 1 'Name Server' | cut -f3 -d " " | cut -f2,3 -d "." | xargs whois | grep "Registrant Organization"
