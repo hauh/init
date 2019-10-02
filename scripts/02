@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [[ $1 ]] ; then
+    if [[ "$1" == "root" ]] ; then
+        echo "You can't kill root!"
+    elif [[ "$1" == "$USER" ]] ; then
+        echo "Please, don't try to kill yourself :("
+    elif ! $( id -u $1 &>/dev/null ) ; then
+        echo "User $1 doesn't exists"
+    else
+        sudo pkill -u $1
+        sudo userdel -fr $1
+        if ! $( id -u $1 &>/dev/null ) ; then
+            echo "User $1 killed!"
+        else
+            echo "User $1 dodged and still exists"
+        fi
+    fi
+else
+    echo "Say the name"
+fi

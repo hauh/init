@@ -1,0 +1,17 @@
+#!bin/bash
+
+if [[ $1 ]] ; then
+    if ! $( id -u "$1" &>/dev/null ) ; then
+        sudo adduser $1
+        sudo usermod -aG sudo $1
+		if $( id -u "$1" &>/dev/null ) ; then
+			echo "User $1 created!"
+		else
+			echo "There was an error"
+		fi
+    else
+        echo "$1 already exists"
+    fi
+else
+    echo "Need a name"
+fi
