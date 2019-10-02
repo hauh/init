@@ -1,1 +1,1 @@
-kill $!
+jobs -p | xargs kill -9

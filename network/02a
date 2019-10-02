@@ -1,1 +1,1 @@
-ifconfig en0 | grep broadcast | cut -f5,6 -d " "
+ifconfig en0 | grep broadcast | awk '{print $5, $6}'
